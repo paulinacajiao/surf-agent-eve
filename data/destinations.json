@@ -1,0 +1,678 @@
+[
+  {
+    "slug": "bali-indonesia",
+    "name": "Bali",
+    "country": "Indonesia",
+    "description": "World-class waves at Uluwatu and Padang Padang.",
+    "hero_image": "/images/destination-bali.jpg",
+    "lat": -8.409518,
+    "lon": 115.188919,
+    "surf_spots": [
+      {
+        "name": "Uluwatu",
+        "break_type": "reef",
+        "difficulty": "advanced",
+        "best_season": null,
+        "description": "Iconic left-hander with multiple sections. Best at mid to high tide.",
+        "wave_height_max": null,
+        "wave_height_min": null
+      },
+      {
+        "name": "Padang Padang",
+        "break_type": "reef",
+        "difficulty": "expert",
+        "best_season": null,
+        "description": "Heavy barreling left. Needs solid swell to break properly.",
+        "wave_height_max": null,
+        "wave_height_min": null
+      },
+      {
+        "name": "Canggu",
+        "break_type": "beach",
+        "difficulty": "beginner",
+        "best_season": null,
+        "description": "Fun beach breaks perfect for learning and improving.",
+        "wave_height_max": null,
+        "wave_height_min": null
+      },
+      {
+        "name": "Keramas",
+        "break_type": "reef",
+        "difficulty": "intermediate",
+        "best_season": null,
+        "description": "Fast right-hander, often hosts WSL events.",
+        "wave_height_max": null,
+        "wave_height_min": null
+      }
+    ],
+    "destination_seasons": [
+      {
+        "month": 1,
+        "notes": "Wet season",
+        "crowd_level": "low",
+        "water_temp_c": 29.0,
+        "wind_direction": "Variable",
+        "swell_direction": "NW/N",
+        "swell_height_max": 5.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 2,
+        "notes": "Wet season",
+        "crowd_level": "low",
+        "water_temp_c": 29.0,
+        "wind_direction": "Variable",
+        "swell_direction": "NW/N",
+        "swell_height_max": 5.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 3,
+        "notes": "Wet season ending",
+        "crowd_level": "low",
+        "water_temp_c": 28.5,
+        "wind_direction": "Variable",
+        "swell_direction": "NW/N",
+        "swell_height_max": 6.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 4,
+        "notes": "Start of dry season, waves building",
+        "crowd_level": "medium",
+        "water_temp_c": 28.0,
+        "wind_direction": "SE trades (offshore)",
+        "swell_direction": "S/SW",
+        "swell_height_max": 10.0,
+        "swell_height_min": 4.0
+      },
+      {
+        "month": 5,
+        "notes": "Peak dry season",
+        "crowd_level": "high",
+        "water_temp_c": 28.0,
+        "wind_direction": "SE trades (offshore)",
+        "swell_direction": "S/SW",
+        "swell_height_max": 10.0,
+        "swell_height_min": 4.0
+      },
+      {
+        "month": 6,
+        "notes": "Peak dry season",
+        "crowd_level": "high",
+        "water_temp_c": 27.5,
+        "wind_direction": "SE trades (offshore)",
+        "swell_direction": "S/SW",
+        "swell_height_max": 10.0,
+        "swell_height_min": 4.0
+      },
+      {
+        "month": 7,
+        "notes": "Best swell of the year",
+        "crowd_level": "high",
+        "water_temp_c": 27.0,
+        "wind_direction": "SE trades (offshore)",
+        "swell_direction": "S/SW",
+        "swell_height_max": 12.0,
+        "swell_height_min": 5.0
+      },
+      {
+        "month": 8,
+        "notes": "Best swell of the year",
+        "crowd_level": "high",
+        "water_temp_c": 27.0,
+        "wind_direction": "SE trades (offshore)",
+        "swell_direction": "S/SW",
+        "swell_height_max": 12.0,
+        "swell_height_min": 5.0
+      },
+      {
+        "month": 9,
+        "notes": "Still excellent",
+        "crowd_level": "high",
+        "water_temp_c": 27.5,
+        "wind_direction": "SE trades (offshore)",
+        "swell_direction": "S/SW",
+        "swell_height_max": 10.0,
+        "swell_height_min": 4.0
+      },
+      {
+        "month": 10,
+        "notes": "Dry season ending",
+        "crowd_level": "medium",
+        "water_temp_c": 28.0,
+        "wind_direction": "Variable",
+        "swell_direction": "S/SW",
+        "swell_height_max": 8.0,
+        "swell_height_min": 3.0
+      },
+      {
+        "month": 11,
+        "notes": "Wet season, smaller waves",
+        "crowd_level": "low",
+        "water_temp_c": 28.5,
+        "wind_direction": "Variable",
+        "swell_direction": "NW/N",
+        "swell_height_max": 6.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 12,
+        "notes": "Wet season",
+        "crowd_level": "low",
+        "water_temp_c": 29.0,
+        "wind_direction": "Variable",
+        "swell_direction": "NW/N",
+        "swell_height_max": 6.0,
+        "swell_height_min": 2.0
+      }
+    ]
+  },
+  {
+    "slug": "nazare-portugal",
+    "name": "Nazar\u00e9",
+    "country": "Portugal",
+    "description": "Big wave capital of the world.",
+    "hero_image": "/images/destination-portugal.jpg",
+    "lat": 39.601048,
+    "lon": -9.07066,
+    "surf_spots": [
+      {
+        "name": "Praia do Norte",
+        "break_type": "beach",
+        "difficulty": "expert",
+        "best_season": null,
+        "description": "The famous big wave spot. Only for elite big wave surfers.",
+        "wave_height_max": null,
+        "wave_height_min": null
+      },
+      {
+        "name": "Praia da Vila",
+        "break_type": "beach",
+        "difficulty": "beginner",
+        "best_season": null,
+        "description": "Town beach with mellow waves, perfect for learning.",
+        "wave_height_max": null,
+        "wave_height_min": null
+      },
+      {
+        "name": "Supertubos",
+        "break_type": "beach",
+        "difficulty": "advanced",
+        "best_season": null,
+        "description": "Heavy beach break barrels, 30 min south in Peniche.",
+        "wave_height_max": null,
+        "wave_height_min": null
+      },
+      {
+        "name": "Foz do Lizandro",
+        "break_type": "beach",
+        "difficulty": "beginner",
+        "best_season": null,
+        "description": "Consistent beach break near Ericeira.",
+        "wave_height_max": null,
+        "wave_height_min": null
+      }
+    ],
+    "destination_seasons": [
+      {
+        "month": 1,
+        "notes": "Peak big wave season",
+        "crowd_level": "low",
+        "water_temp_c": 14.0,
+        "wind_direction": "Variable, stormy",
+        "swell_direction": "NW/W",
+        "swell_height_max": 40.0,
+        "swell_height_min": 6.0
+      },
+      {
+        "month": 2,
+        "notes": "Big swells continue",
+        "crowd_level": "low",
+        "water_temp_c": 14.0,
+        "wind_direction": "Variable, stormy",
+        "swell_direction": "NW/W",
+        "swell_height_max": 30.0,
+        "swell_height_min": 6.0
+      },
+      {
+        "month": 3,
+        "notes": "Big wave season tapering",
+        "crowd_level": "low",
+        "water_temp_c": 14.5,
+        "wind_direction": "Variable",
+        "swell_direction": "NW/W",
+        "swell_height_max": 20.0,
+        "swell_height_min": 4.0
+      },
+      {
+        "month": 4,
+        "notes": "Spring, mellower waves",
+        "crowd_level": "medium",
+        "water_temp_c": 15.5,
+        "wind_direction": "N afternoon wind",
+        "swell_direction": "NW",
+        "swell_height_max": 6.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 5,
+        "notes": "Good for all levels",
+        "crowd_level": "medium",
+        "water_temp_c": 16.5,
+        "wind_direction": "N afternoon wind",
+        "swell_direction": "NW",
+        "swell_height_max": 5.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 6,
+        "notes": "Summer season",
+        "crowd_level": "medium",
+        "water_temp_c": 17.5,
+        "wind_direction": "N afternoon wind",
+        "swell_direction": "NW",
+        "swell_height_max": 5.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 7,
+        "notes": "Busy summer",
+        "crowd_level": "medium",
+        "water_temp_c": 18.5,
+        "wind_direction": "N afternoon wind",
+        "swell_direction": "NW",
+        "swell_height_max": 5.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 8,
+        "notes": "Peak summer crowds",
+        "crowd_level": "medium",
+        "water_temp_c": 19.5,
+        "wind_direction": "N afternoon wind",
+        "swell_direction": "NW",
+        "swell_height_max": 6.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 9,
+        "notes": "Autumn swell building",
+        "crowd_level": "medium",
+        "water_temp_c": 19.0,
+        "wind_direction": "Variable",
+        "swell_direction": "NW/W",
+        "swell_height_max": 8.0,
+        "swell_height_min": 3.0
+      },
+      {
+        "month": 10,
+        "notes": "Big wave season begins",
+        "crowd_level": "medium",
+        "water_temp_c": 17.0,
+        "wind_direction": "Variable, stormy",
+        "swell_direction": "NW/W",
+        "swell_height_max": 30.0,
+        "swell_height_min": 5.0
+      },
+      {
+        "month": 11,
+        "notes": "World record swell window",
+        "crowd_level": "low",
+        "water_temp_c": 15.5,
+        "wind_direction": "Variable, stormy",
+        "swell_direction": "NW/W",
+        "swell_height_max": 40.0,
+        "swell_height_min": 6.0
+      },
+      {
+        "month": 12,
+        "notes": "Peak big wave season",
+        "crowd_level": "low",
+        "water_temp_c": 14.5,
+        "wind_direction": "Variable, stormy",
+        "swell_direction": "NW/W",
+        "swell_height_max": 40.0,
+        "swell_height_min": 6.0
+      }
+    ]
+  },
+  {
+    "slug": "north-shore-hawaii",
+    "name": "North Shore",
+    "country": "Hawaii, USA",
+    "description": "The mecca of surfing with legendary winter swells.",
+    "hero_image": "/images/destination-hawaii.jpg",
+    "lat": 21.645049,
+    "lon": -158.053705,
+    "surf_spots": [
+      {
+        "name": "Pipeline",
+        "break_type": "reef",
+        "difficulty": "expert",
+        "best_season": null,
+        "description": "The most famous wave in the world. Heavy, shallow, and unforgiving.",
+        "wave_height_max": null,
+        "wave_height_min": null
+      },
+      {
+        "name": "Sunset Beach",
+        "break_type": "reef",
+        "difficulty": "advanced",
+        "best_season": null,
+        "description": "Powerful, shifting peaks with heavy hold-downs.",
+        "wave_height_max": null,
+        "wave_height_min": null
+      },
+      {
+        "name": "Waimea Bay",
+        "break_type": "beach",
+        "difficulty": "expert",
+        "best_season": null,
+        "description": "Big wave spot that only breaks on massive swells.",
+        "wave_height_max": null,
+        "wave_height_min": null
+      },
+      {
+        "name": "Haleiwa",
+        "break_type": "reef",
+        "difficulty": "intermediate",
+        "best_season": null,
+        "description": "Fun walls and barrels, more forgiving than other spots.",
+        "wave_height_max": null,
+        "wave_height_min": null
+      }
+    ],
+    "destination_seasons": [
+      {
+        "month": 1,
+        "notes": "Peak winter season",
+        "crowd_level": "high",
+        "water_temp_c": 24.0,
+        "wind_direction": "Variable",
+        "swell_direction": "N/NW",
+        "swell_height_max": 25.0,
+        "swell_height_min": 8.0
+      },
+      {
+        "month": 2,
+        "notes": "Late winter swells",
+        "crowd_level": "high",
+        "water_temp_c": 24.0,
+        "wind_direction": "Variable",
+        "swell_direction": "N/NW",
+        "swell_height_max": 20.0,
+        "swell_height_min": 6.0
+      },
+      {
+        "month": 3,
+        "notes": "Transition, smaller swells",
+        "crowd_level": "medium",
+        "water_temp_c": 24.5,
+        "wind_direction": "NE trades",
+        "swell_direction": "N/NW",
+        "swell_height_max": 8.0,
+        "swell_height_min": 3.0
+      },
+      {
+        "month": 4,
+        "notes": "Flat season begins",
+        "crowd_level": "low",
+        "water_temp_c": 25.0,
+        "wind_direction": "NE trades",
+        "swell_direction": "S/SW",
+        "swell_height_max": 4.0,
+        "swell_height_min": 1.0
+      },
+      {
+        "month": 5,
+        "notes": "Flat season",
+        "crowd_level": "low",
+        "water_temp_c": 25.5,
+        "wind_direction": "NE trades (E side)",
+        "swell_direction": "S/SW",
+        "swell_height_max": 3.0,
+        "swell_height_min": 1.0
+      },
+      {
+        "month": 6,
+        "notes": "Flat, good for swimming",
+        "crowd_level": "low",
+        "water_temp_c": 26.0,
+        "wind_direction": "NE trades",
+        "swell_direction": "S/SW",
+        "swell_height_max": 3.0,
+        "swell_height_min": 1.0
+      },
+      {
+        "month": 7,
+        "notes": "Flat season",
+        "crowd_level": "low",
+        "water_temp_c": 26.5,
+        "wind_direction": "NE trades",
+        "swell_direction": "S/SW",
+        "swell_height_max": 4.0,
+        "swell_height_min": 1.0
+      },
+      {
+        "month": 8,
+        "notes": "Flat season",
+        "crowd_level": "low",
+        "water_temp_c": 27.0,
+        "wind_direction": "NE trades",
+        "swell_direction": "S/SW",
+        "swell_height_max": 4.0,
+        "swell_height_min": 1.0
+      },
+      {
+        "month": 9,
+        "notes": "End of flat season",
+        "crowd_level": "low",
+        "water_temp_c": 27.0,
+        "wind_direction": "NE trades",
+        "swell_direction": "S/SW",
+        "swell_height_max": 3.0,
+        "swell_height_min": 1.0
+      },
+      {
+        "month": 10,
+        "notes": "Season start, first NW swells",
+        "crowd_level": "medium",
+        "water_temp_c": 26.0,
+        "wind_direction": "Variable",
+        "swell_direction": "N/NW",
+        "swell_height_max": 8.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 11,
+        "notes": "Winter season opens, big swells arrive",
+        "crowd_level": "high",
+        "water_temp_c": 25.0,
+        "wind_direction": "Variable",
+        "swell_direction": "N/NW",
+        "swell_height_max": 20.0,
+        "swell_height_min": 6.0
+      },
+      {
+        "month": 12,
+        "notes": "Peak season \u2014 Pipeline Masters",
+        "crowd_level": "high",
+        "water_temp_c": 24.5,
+        "wind_direction": "Variable",
+        "swell_direction": "N/NW",
+        "swell_height_max": 25.0,
+        "swell_height_min": 8.0
+      }
+    ]
+  },
+  {
+    "slug": "santa-teresa-costa-rica",
+    "name": "Santa Teresa",
+    "country": "Costa Rica",
+    "description": "Tropical paradise with consistent waves.",
+    "hero_image": "/images/destination-costarica.jpg",
+    "lat": 9.643888,
+    "lon": -85.168648,
+    "surf_spots": [
+      {
+        "name": "Playa Santa Teresa",
+        "break_type": "beach",
+        "difficulty": "beginner",
+        "best_season": null,
+        "description": "Main beach with multiple peaks, something for everyone.",
+        "wave_height_max": null,
+        "wave_height_min": null
+      },
+      {
+        "name": "Playa Hermosa",
+        "break_type": "beach",
+        "difficulty": "intermediate",
+        "best_season": null,
+        "description": "More powerful waves, less crowded than main beach.",
+        "wave_height_max": null,
+        "wave_height_min": null
+      },
+      {
+        "name": "Mal Pa\u00eds",
+        "break_type": "point",
+        "difficulty": "intermediate",
+        "best_season": null,
+        "description": "Rocky point breaks with longer rides.",
+        "wave_height_max": null,
+        "wave_height_min": null
+      },
+      {
+        "name": "Playa Carmen",
+        "break_type": "beach",
+        "difficulty": "beginner",
+        "best_season": null,
+        "description": "Mellow waves, ideal for learning.",
+        "wave_height_max": null,
+        "wave_height_min": null
+      }
+    ],
+    "destination_seasons": [
+      {
+        "month": 1,
+        "notes": "Best dry season month",
+        "crowd_level": "high",
+        "water_temp_c": 27.5,
+        "wind_direction": "Offshore mornings",
+        "swell_direction": "SW/W",
+        "swell_height_max": 8.0,
+        "swell_height_min": 3.0
+      },
+      {
+        "month": 2,
+        "notes": "Excellent conditions",
+        "crowd_level": "high",
+        "water_temp_c": 28.0,
+        "wind_direction": "Offshore mornings",
+        "swell_direction": "SW/W",
+        "swell_height_max": 8.0,
+        "swell_height_min": 3.0
+      },
+      {
+        "month": 3,
+        "notes": "Dry season ending",
+        "crowd_level": "medium",
+        "water_temp_c": 28.0,
+        "wind_direction": "Offshore mornings",
+        "swell_direction": "SW/W",
+        "swell_height_max": 7.0,
+        "swell_height_min": 3.0
+      },
+      {
+        "month": 4,
+        "notes": "Transition month",
+        "crowd_level": "medium",
+        "water_temp_c": 28.0,
+        "wind_direction": "Variable",
+        "swell_direction": "SW/W",
+        "swell_height_max": 6.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 5,
+        "notes": "Green season, less crowd",
+        "crowd_level": "low",
+        "water_temp_c": 28.0,
+        "wind_direction": "Variable",
+        "swell_direction": "S/SW",
+        "swell_height_max": 6.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 6,
+        "notes": "Green season",
+        "crowd_level": "low",
+        "water_temp_c": 27.5,
+        "wind_direction": "Variable",
+        "swell_direction": "S/SW",
+        "swell_height_max": 5.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 7,
+        "notes": "Green season",
+        "crowd_level": "low",
+        "water_temp_c": 27.0,
+        "wind_direction": "Variable",
+        "swell_direction": "S/SW",
+        "swell_height_max": 5.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 8,
+        "notes": "Green season",
+        "crowd_level": "low",
+        "water_temp_c": 27.0,
+        "wind_direction": "Variable",
+        "swell_direction": "S/SW",
+        "swell_height_max": 5.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 9,
+        "notes": "Green season",
+        "crowd_level": "low",
+        "water_temp_c": 27.5,
+        "wind_direction": "Variable",
+        "swell_direction": "S/SW",
+        "swell_height_max": 6.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 10,
+        "notes": "Late green season",
+        "crowd_level": "low",
+        "water_temp_c": 28.0,
+        "wind_direction": "Variable",
+        "swell_direction": "S/SW",
+        "swell_height_max": 6.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 11,
+        "notes": "Green season ending",
+        "crowd_level": "low",
+        "water_temp_c": 27.5,
+        "wind_direction": "Variable",
+        "swell_direction": "S/SW",
+        "swell_height_max": 6.0,
+        "swell_height_min": 2.0
+      },
+      {
+        "month": 12,
+        "notes": "Dry season, peak tourism",
+        "crowd_level": "high",
+        "water_temp_c": 27.5,
+        "wind_direction": "Offshore mornings",
+        "swell_direction": "SW/W",
+        "swell_height_max": 8.0,
+        "swell_height_min": 3.0
+      }
+    ]
+  }
+]
