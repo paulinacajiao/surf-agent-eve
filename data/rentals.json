@@ -8,11 +8,46 @@
       "location": "Canggu, Bali",
       "rating": 4.9,
       "items": [
-        { "sku": "softtop-8", "type": "board", "name": "8'0\" soft-top", "level": "beginner", "price_per_day_usd": 8, "stock": 12 },
-        { "sku": "funboard-7", "type": "board", "name": "7'2\" funboard", "level": "intermediate", "price_per_day_usd": 12, "stock": 6 },
-        { "sku": "shortboard-6", "type": "board", "name": "6'0\" shortboard", "level": "advanced", "price_per_day_usd": 15, "stock": 4 },
-        { "sku": "rashguard", "type": "gear", "name": "Rash guard + reef booties", "level": "all", "price_per_day_usd": 4, "stock": 20 },
-        { "sku": "lesson-group", "type": "lesson", "name": "2 h group lesson (max 4)", "level": "beginner", "price_per_day_usd": 35, "stock": 8 }
+        {
+          "sku": "softtop-8",
+          "type": "board",
+          "name": "8'0\" soft-top",
+          "level": "beginner",
+          "price_per_day_usd": 8,
+          "stock": 12
+        },
+        {
+          "sku": "funboard-7",
+          "type": "board",
+          "name": "7'2\" funboard",
+          "level": "intermediate",
+          "price_per_day_usd": 12,
+          "stock": 6
+        },
+        {
+          "sku": "shortboard-6",
+          "type": "board",
+          "name": "6'0\" shortboard",
+          "level": "advanced",
+          "price_per_day_usd": 15,
+          "stock": 4
+        },
+        {
+          "sku": "rashguard",
+          "type": "gear",
+          "name": "Rash guard + reef booties",
+          "level": "all",
+          "price_per_day_usd": 4,
+          "stock": 20
+        },
+        {
+          "sku": "lesson-group",
+          "type": "lesson",
+          "name": "2 h group lesson (max 4)",
+          "level": "beginner",
+          "price_per_day_usd": 35,
+          "stock": 8
+        }
       ]
     },
     {
@@ -22,7 +57,14 @@
       "location": "Uluwatu, Bali",
       "rating": 5.0,
       "items": [
-        { "sku": "lesson-private", "type": "lesson", "name": "1.5 h private coaching", "level": "all", "price_per_day_usd": 75, "stock": 3 }
+        {
+          "sku": "lesson-private",
+          "type": "lesson",
+          "name": "1.5 h private coaching",
+          "level": "all",
+          "price_per_day_usd": 75,
+          "stock": 3
+        }
       ]
     },
     {
@@ -32,10 +74,38 @@
       "location": "Haleiwa, Oahu",
       "rating": 4.8,
       "items": [
-        { "sku": "softtop-9", "type": "board", "name": "9'0\" soft-top", "level": "beginner", "price_per_day_usd": 25, "stock": 10 },
-        { "sku": "fish-6", "type": "board", "name": "5'10\" fish", "level": "intermediate", "price_per_day_usd": 35, "stock": 5 },
-        { "sku": "gun-7", "type": "board", "name": "7'6\" step-up gun", "level": "expert", "price_per_day_usd": 55, "stock": 2 },
-        { "sku": "lesson-group", "type": "lesson", "name": "2 h group lesson at a sheltered break", "level": "beginner", "price_per_day_usd": 90, "stock": 8 }
+        {
+          "sku": "softtop-9",
+          "type": "board",
+          "name": "9'0\" soft-top",
+          "level": "beginner",
+          "price_per_day_usd": 25,
+          "stock": 10
+        },
+        {
+          "sku": "fish-6",
+          "type": "board",
+          "name": "5'10\" fish",
+          "level": "intermediate",
+          "price_per_day_usd": 35,
+          "stock": 5
+        },
+        {
+          "sku": "gun-7",
+          "type": "board",
+          "name": "7'6\" step-up gun",
+          "level": "expert",
+          "price_per_day_usd": 55,
+          "stock": 2
+        },
+        {
+          "sku": "lesson-group",
+          "type": "lesson",
+          "name": "2 h group lesson at a sheltered break",
+          "level": "beginner",
+          "price_per_day_usd": 90,
+          "stock": 8
+        }
       ]
     },
     {
@@ -45,30 +115,72 @@
       "location": "North Shore, Oahu",
       "rating": 4.9,
       "items": [
-        { "sku": "lesson-barrel", "type": "lesson", "name": "Barrel-riding clinic, advanced only", "level": "advanced", "price_per_day_usd": 150, "stock": 2 }
+        {
+          "sku": "lesson-barrel",
+          "type": "lesson",
+          "name": "Barrel-riding clinic, advanced only",
+          "level": "advanced",
+          "price_per_day_usd": 150,
+          "stock": 2
+        }
       ]
     },
     {
       "id": "atlantic-wave-lodge",
       "name": "Atlantic Wave Lodge",
       "destination": "nazare-portugal",
-      "location": "Nazaré, Portugal",
+      "location": "Nazar\u00e9, Portugal",
       "rating": 4.7,
       "items": [
-        { "sku": "softtop-8", "type": "board", "name": "8'0\" soft-top", "level": "beginner", "price_per_day_usd": 15, "stock": 8 },
-        { "sku": "shortboard-6", "type": "board", "name": "6'2\" shortboard", "level": "intermediate", "price_per_day_usd": 20, "stock": 5 },
-        { "sku": "wetsuit-43", "type": "gear", "name": "4/3 mm wetsuit", "level": "all", "price_per_day_usd": 10, "stock": 15 },
-        { "sku": "lesson-group", "type": "lesson", "name": "2 h group lesson at Praia do Norte (south side)", "level": "beginner", "price_per_day_usd": 40, "stock": 6 }
+        {
+          "sku": "softtop-8",
+          "type": "board",
+          "name": "8'0\" soft-top",
+          "level": "beginner",
+          "price_per_day_usd": 15,
+          "stock": 8
+        },
+        {
+          "sku": "shortboard-6",
+          "type": "board",
+          "name": "6'2\" shortboard",
+          "level": "intermediate",
+          "price_per_day_usd": 20,
+          "stock": 5
+        },
+        {
+          "sku": "wetsuit-43",
+          "type": "gear",
+          "name": "4/3 mm wetsuit",
+          "level": "all",
+          "price_per_day_usd": 10,
+          "stock": 15
+        },
+        {
+          "sku": "lesson-group",
+          "type": "lesson",
+          "name": "2 h group lesson at Praia do Norte (south side)",
+          "level": "beginner",
+          "price_per_day_usd": 40,
+          "stock": 6
+        }
       ]
     },
     {
       "id": "tom-wheeler",
       "name": "Tom Wheeler (big-wave safety)",
       "destination": "nazare-portugal",
-      "location": "Nazaré, Portugal",
+      "location": "Nazar\u00e9, Portugal",
       "rating": 4.8,
       "items": [
-        { "sku": "safety-course", "type": "lesson", "name": "Big-wave safety and breath-hold course", "level": "expert", "price_per_day_usd": 250, "stock": 2 }
+        {
+          "sku": "safety-course",
+          "type": "lesson",
+          "name": "Big-wave safety and breath-hold course",
+          "level": "expert",
+          "price_per_day_usd": 250,
+          "stock": 2
+        }
       ]
     },
     {
@@ -78,10 +190,157 @@
       "location": "Santa Teresa, Costa Rica",
       "rating": 4.8,
       "items": [
-        { "sku": "softtop-8", "type": "board", "name": "8'0\" soft-top", "level": "beginner", "price_per_day_usd": 10, "stock": 14 },
-        { "sku": "midlength-7", "type": "board", "name": "7'0\" mid-length", "level": "intermediate", "price_per_day_usd": 15, "stock": 6 },
-        { "sku": "shortboard-6", "type": "board", "name": "6'0\" shortboard", "level": "advanced", "price_per_day_usd": 18, "stock": 4 },
-        { "sku": "lesson-group", "type": "lesson", "name": "2 h group lesson", "level": "beginner", "price_per_day_usd": 45, "stock": 10 }
+        {
+          "sku": "softtop-8",
+          "type": "board",
+          "name": "8'0\" soft-top",
+          "level": "beginner",
+          "price_per_day_usd": 10,
+          "stock": 14
+        },
+        {
+          "sku": "midlength-7",
+          "type": "board",
+          "name": "7'0\" mid-length",
+          "level": "intermediate",
+          "price_per_day_usd": 15,
+          "stock": 6
+        },
+        {
+          "sku": "shortboard-6",
+          "type": "board",
+          "name": "6'0\" shortboard",
+          "level": "advanced",
+          "price_per_day_usd": 18,
+          "stock": 4
+        },
+        {
+          "sku": "lesson-group",
+          "type": "lesson",
+          "name": "2 h group lesson",
+          "level": "beginner",
+          "price_per_day_usd": 45,
+          "stock": 10
+        }
+      ]
+    },
+    {
+      "id": "onda-carioca-surf-camp",
+      "name": "Onda Carioca Surf Camp",
+      "destination": "rio-de-janeiro-brazil",
+      "location": "Barra da Tijuca, Rio",
+      "rating": 4.8,
+      "items": [
+        {
+          "sku": "camp-7n-intermediate",
+          "type": "camp",
+          "name": "7-night surf camp: daily coaching, board, breakfast (intermediate)",
+          "level": "intermediate",
+          "price_per_day_usd": 95,
+          "stock": 6,
+          "availability": [
+            {
+              "week_of": "2026-11-16",
+              "spots_left": 0
+            },
+            {
+              "week_of": "2026-11-23",
+              "spots_left": 3
+            },
+            {
+              "week_of": "2026-11-30",
+              "spots_left": 5
+            },
+            {
+              "week_of": "2026-12-07",
+              "spots_left": 2
+            }
+          ]
+        },
+        {
+          "sku": "funboard-7",
+          "type": "board",
+          "name": "7'4\" funboard",
+          "level": "intermediate",
+          "price_per_day_usd": 14,
+          "stock": 8
+        }
+      ]
+    },
+    {
+      "id": "prainha-surf-house",
+      "name": "Prainha Surf House",
+      "destination": "rio-de-janeiro-brazil",
+      "location": "Recreio / Prainha, Rio",
+      "rating": 4.9,
+      "items": [
+        {
+          "sku": "camp-5n-progression",
+          "type": "camp",
+          "name": "5-night progression camp with video analysis (intermediate-advanced)",
+          "level": "intermediate",
+          "price_per_day_usd": 120,
+          "stock": 4,
+          "availability": [
+            {
+              "week_of": "2026-11-16",
+              "spots_left": 1
+            },
+            {
+              "week_of": "2026-11-23",
+              "spots_left": 0
+            },
+            {
+              "week_of": "2026-11-30",
+              "spots_left": 4
+            },
+            {
+              "week_of": "2026-12-07",
+              "spots_left": 4
+            }
+          ]
+        },
+        {
+          "sku": "shortboard-6",
+          "type": "board",
+          "name": "6'2\" shortboard",
+          "level": "advanced",
+          "price_per_day_usd": 18,
+          "stock": 5
+        }
+      ]
+    },
+    {
+      "id": "posto-9-board-rental",
+      "name": "Posto 9 Boards & Lessons",
+      "destination": "rio-de-janeiro-brazil",
+      "location": "Ipanema / Arpoador, Rio",
+      "rating": 4.6,
+      "items": [
+        {
+          "sku": "softtop-8",
+          "type": "board",
+          "name": "8'0\" soft-top",
+          "level": "beginner",
+          "price_per_day_usd": 10,
+          "stock": 15
+        },
+        {
+          "sku": "lesson-group",
+          "type": "lesson",
+          "name": "2 h group lesson at Ipanema",
+          "level": "beginner",
+          "price_per_day_usd": 30,
+          "stock": 10
+        },
+        {
+          "sku": "lesson-private",
+          "type": "lesson",
+          "name": "1.5 h private coaching at Arpoador",
+          "level": "intermediate",
+          "price_per_day_usd": 60,
+          "stock": 4
+        }
       ]
     }
   ]

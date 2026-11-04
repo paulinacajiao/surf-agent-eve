@@ -11,7 +11,8 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
  */
 export default defineTool({
   description:
-    "Look up a Glassy destination (Bali, North Shore Hawaii, Nazaré Portugal, Santa Teresa Costa Rica) " +
+    "Look up a Glassy destination (Bali, North Shore Hawaii, Nazaré Portugal, Santa Teresa Costa Rica, " +
+    "Rio de Janeiro Brazil) " +
     "or one of its surf spots. Returns the destination's coordinates, every spot with its break type " +
     "and difficulty, and the typical season for a month (swell, wind, crowds, water temperature). " +
     "Use it to pick a spot that matches the surfer's level and for 'when should I go' questions. " +

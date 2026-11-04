@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "rio-de-janeiro-brazil",
+    "name": "Rio de Janeiro",
+    "country": "Brazil",
+    "description": "City surfing between granite peaks: Arpoador's sandbars, Barra's long beach and the wild coves of the west zone.",
+    "hero_image": "/images/hero-surf.jpg",
+    "lat": -22.9888,
+    "lon": -43.1925,
+    "surf_spots": [
+      {
+        "name": "Arpoador",
+        "break_type": "beach",
+        "difficulty": "intermediate",
+        "best_season": "Apr-Sep (S/SW swells)",
+        "wave_height_min": 2,
+        "wave_height_max": 6,
+        "description": "Sandbar peak wrapping off the Arpoador rock at the end of Ipanema. Rights and lefts, busy with locals at sunset."
+      },
+      {
+        "name": "Ipanema (Posto 9-10)",
+        "break_type": "beach",
+        "difficulty": "beginner",
+        "best_season": "Year-round on small days",
+        "wave_height_min": 1,
+        "wave_height_max": 4,
+        "description": "Gentle beach break on small swells, good for lessons. Gets closeouts when the swell is big."
+      },
+      {
+        "name": "Barra da Tijuca",
+        "break_type": "beach",
+        "difficulty": "intermediate",
+        "best_season": "Mar-Oct",
+        "wave_height_min": 2,
+        "wave_height_max": 7,
+        "description": "Long open beach with many peaks along the Postos, so it's easy to find space. Picks up most S and SE swells."
+      },
+      {
+        "name": "Prainha",
+        "break_type": "beach",
+        "difficulty": "advanced",
+        "best_season": "Apr-Sep",
+        "wave_height_min": 3,
+        "wave_height_max": 10,
+        "description": "Rio's most consistent wave, in a nature reserve west of Recreio. Powerful rights and lefts, rips on big days."
+      },
+      {
+        "name": "Itacoatiara (Niteroi)",
+        "break_type": "beach",
+        "difficulty": "expert",
+        "best_season": "May-Sep",
+        "wave_height_min": 4,
+        "wave_height_max": 15,
+        "description": "Heavy, hollow shorebreak across the bay in Niteroi. Experts and bodyboarders only."
+      }
+    ],
+    "destination_seasons": [
+      { "month": 1, "swell_height_min": 1, "swell_height_max": 3, "swell_direction": "E/SE", "wind_direction": "E sea breeze (afternoons)", "crowd_level": "high", "water_temp_c": 24, "notes": "Summer: small, crowded, hot. Surf early before the sea breeze." },
+      { "month": 2, "swell_height_min": 1, "swell_height_max": 3, "swell_direction": "E/SE", "wind_direction": "E sea breeze (afternoons)", "crowd_level": "high", "water_temp_c": 24, "notes": "Carnival crowds. Small swells, occasional E windswell." },
+      { "month": 3, "swell_height_min": 2, "swell_height_max": 4, "swell_direction": "SE/S", "wind_direction": "E/NE", "crowd_level": "medium", "water_temp_c": 24, "notes": "First autumn S swells start to show." },
+      { "month": 4, "swell_height_min": 2, "swell_height_max": 5, "swell_direction": "S/SW", "wind_direction": "N/NE mornings", "crowd_level": "medium", "water_temp_c": 23, "notes": "Good season starts: cold fronts bring S swells and offshore mornings." },
+      { "month": 5, "swell_height_min": 3, "swell_height_max": 6, "swell_direction": "S/SW", "wind_direction": "N/NW after fronts", "crowd_level": "medium", "water_temp_c": 22, "notes": "Prime time. Prainha and Arpoador at their best." },
+      { "month": 6, "swell_height_min": 3, "swell_height_max": 7, "swell_direction": "S/SW", "wind_direction": "N/NW after fronts", "crowd_level": "low", "water_temp_c": 21, "notes": "Most consistent month. Bring a 3/2 wetsuit for dawn." },
+      { "month": 7, "swell_height_min": 3, "swell_height_max": 7, "swell_direction": "S/SW", "wind_direction": "N/NW after fronts", "crowd_level": "low", "water_temp_c": 20, "notes": "Big S swells; Itacoatiara wakes up. Coolest water of the year." },
+      { "month": 8, "swell_height_min": 3, "swell_height_max": 6, "swell_direction": "S/SW", "wind_direction": "N/NE", "crowd_level": "low", "water_temp_c": 20, "notes": "Still strong swells, fewer crowds." },
+      { "month": 9, "swell_height_min": 2, "swell_height_max": 5, "swell_direction": "S/SE", "wind_direction": "NE", "crowd_level": "medium", "water_temp_c": 21, "notes": "Swells easing; NE wind more frequent in the afternoon." },
+      { "month": 10, "swell_height_min": 2, "swell_height_max": 4, "swell_direction": "SE/E", "wind_direction": "NE/E", "crowd_level": "medium", "water_temp_c": 21, "notes": "Spring: mixed swells, wind is the main issue. Surf mornings." },
+      { "month": 11, "swell_height_min": 2, "swell_height_max": 4, "swell_direction": "SE/S", "wind_direction": "E/NE afternoons", "crowd_level": "medium", "water_temp_c": 22, "notes": "Late-season S swells still show up between fronts. Barra and Arpoador are the safest bets; surf before 10am." },
+      { "month": 12, "swell_height_min": 1, "swell_height_max": 3, "swell_direction": "E/SE", "wind_direction": "E sea breeze (afternoons)", "crowd_level": "high", "water_temp_c": 23, "notes": "Summer holidays: small and crowded. Mornings and longboards." }
+    ]
+  }
+]
