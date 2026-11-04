@@ -41,7 +41,7 @@ Verified working with eve tools on Bedrock: Claude Haiku 5.5, Sonnet 5.5, GPT-5.
 | 15 | **Web chat refuses production traffic by default** | `placeholderAuth()` returns 401 in production; a public demo needs a custom `AuthFn` around `none()` | Wrote an auth gate: same-origin, a per-IP limit, and an env flag | Secure by default (good), but there's no built-in rate limit for anonymous use |
 | 16 | **Local site + agent needs a newer CLI** | `vercel dev --local` needs Vercel CLI 59.16+, and 50.33 was installed | Used `pnpm dlx vercel@latest` | The installer could check the version |
 | 17 | **Images broke under Vercel services** | With `vercel.ts` services, Next.js `/_next/image` returned 404, so every image was broken | `images: { unoptimized: true }` | Looks like a platform/routing gap worth reporting |
-| 18 | **No preview path for deploys** | `eve deploy` only deploys to production. `vercel deploy` without `--prod` also went to production, as the project's first deployment | Lived with it; the project is demo-only | A preview flag on `eve deploy` would help teams review before going live |
+| 18 | **No preview path for deploys** | `eve deploy` only deploys to production. `vercel deploy` without `--prod` also went to production, as the project's first deployment | Connected the GitHub repo: branches now get preview deployments, and `main` deploys to production | A preview flag on `eve deploy` would help; the Git workflow is the practical answer |
 | 19 | **Short-lived dev tokens** | The local AI Gateway token from `eve link` lasts 12 h | Re-run `eve link` | Fine, but surprising mid-demo |
 
 ## Data and product
