@@ -1,4 +1,5 @@
 import bundledDestinations from "../../data/destinations.json" with { type: "json" };
+import demoDestinations from "../../data/demo-destinations.json" with { type: "json" };
 import rentals from "../../data/rentals.json" with { type: "json" };
 
 /**
@@ -58,14 +59,25 @@ export async function loadDestinations(): Promise<{ source: string; destinations
       });
       if (res.ok) {
         const rows = (await res.json()) as Destination[];
-        return { source: "glassy-supabase", destinations: rows.map(normalize) };
+        return { source: "glassy-supabase", destinations: withDemoExtras(rows.map(normalize)) };
       }
       console.warn(`[glassy] Supabase returned ${res.status}; using bundled data`);
     } catch (err) {
       console.warn("[glassy] Supabase unreachable; using bundled data", err);
     }
   }
-  return { source: "bundled-snapshot", destinations: bundledDestinations as Destination[] };
+  return { source: "bundled-snapshot", destinations: withDemoExtras(bundledDestinations as Destination[]) };
+}
+
+/**
+ * DECISION: demo-only destinations (data/demo-destinations.json, e.g. Rio) are
+ * added whenever the source doesn't already have that slug or has no spots for
+ * it. Once Glassy's database gets real Rio data, the database wins.
+ */
+function withDemoExtras(destinations: Destination[]): Destination[] {
+  const real = new Map(destinations.filter((d) => d.surf_spots.length > 0).map((d) => [d.slug, d]));
+  const extras = (demoDestinations as Destination[]).filter((d) => !real.has(d.slug));
+  return [...destinations.filter((d) => !extras.some((e) => e.slug === d.slug)), ...extras];
 }
 
 function normalize(d: Destination): Destination {
@@ -85,7 +97,7 @@ export function findDestination(destinations: Destination[], query: string): Des
   const q = norm(query);
   return (
     destinations.find((d) => d.slug === query) ??
-    destinations.find((d) => norm(d.name) === q || q.includes(norm(d.name))) ??
+    destinations.find((d) => norm(d.name) === q || q.includes(norm(d.name)) || (q.length >= 3 && norm(d.name).startsWith(q))) ??
     destinations.find((d) => d.surf_spots.some((s) => q.includes(norm(s.name)) || norm(s.name).includes(q))) ??
     destinations.find((d) => q.includes(norm(d.country)) || norm(d.country).includes(q))
   );

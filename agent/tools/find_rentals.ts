@@ -5,12 +5,13 @@ import { findDestination, loadDestinations, RENTAL_SHOPS } from "../lib/glassy";
 /** MOCK: board, gear and lesson availability from data/rentals.json. */
 export default defineTool({
   description:
-    "Find surf board rentals, gear and lessons at a Glassy destination. Returns shops with item SKUs, " +
-    "level, price per day in USD and stock. DEMO DATA: prices and stock are mock values. " +
+    "Find surf board rentals, gear, lessons and surf camps at a Glassy destination. Returns shops with item SKUs, " +
+    "level, price per day in USD and stock. Camps also list weekly availability (week_of = Monday, spots_left). " +
+    "DEMO DATA: prices, stock and availability are mock values. " +
     "Use the returned shop_id and sku with book_rental.",
   inputSchema: z.object({
     destination: z.string().min(1).max(100).describe("Destination or spot name, e.g. 'Bali' or 'Canggu'"),
-    type: z.enum(["board", "gear", "lesson", "any"]).default("any"),
+    type: z.enum(["board", "gear", "lesson", "camp", "any"]).default("any"),
     level: z.enum(["beginner", "intermediate", "advanced", "expert", "any"]).default("any"),
   }),
   label: { start: ({ destination }) => `Checking rentals in ${destination}` },
