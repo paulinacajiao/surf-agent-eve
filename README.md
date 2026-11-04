@@ -56,6 +56,13 @@ AWS_PROFILE=<profile> pnpm dlx vercel@latest dev --local   # site + agent on htt
 
 ## Deploy
 
+This repo is connected to the Vercel project `surf-agent-eve`:
+
+- **Push to any branch:** Vercel builds a **preview** deployment and posts its URL on the commit or PR.
+- **Merge to `main`:** Vercel deploys to **production** (https://surf-agent-eve.vercel.app).
+
+To deploy your own copy from scratch:
+
 ```bash
 pnpm exec eve link
 vercel env add PUBLIC_DEMO production         # true
