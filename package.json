@@ -29,6 +29,7 @@
     "@streamdown/math": "1.0.2",
     "@streamdown/mermaid": "1.0.2",
     "@tailwindcss/postcss": "4.3.0",
+    "@vercel/analytics": "^2.0.1",
     "@vercel/connect": "2.7.0",
     "@vercel/oidc-aws-credentials-provider": "3.3.18",
     "ai": "^7.0.137",
