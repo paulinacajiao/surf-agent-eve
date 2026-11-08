@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Geist_Mono, Inter, Space_Grotesk } from "next/font/google";
 import type { ReactNode } from "react";
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { readonly children: ReactNode 
       <body className="font-sans antialiased">
         <TooltipProvider>{children}</TooltipProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
