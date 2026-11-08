@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Geist_Mono, Inter, Space_Grotesk } from "next/font/google";
 import type { ReactNode } from "react";
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { readonly children: ReactNode 
     <html className={cn(inter.variable, spaceGrotesk.variable, mono.variable)} lang="en">
       <body className="font-sans antialiased">
         <TooltipProvider>{children}</TooltipProvider>
+        <Analytics />
       </body>
     </html>
   );
