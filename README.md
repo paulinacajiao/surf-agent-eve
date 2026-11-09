@@ -6,9 +6,10 @@ One repo, one Vercel project:
 - **`agent/`** is an [eve](https://vercel.com/docs/frameworks/agents/eve) agent with durable sessions, tools, approvals and traces.
 - **`apps/web/`** is a light version of the Glassy site: destination pages with an "Ask Glassy" chat.
 - Model calls go through **Vercel AI Gateway** to **Amazon Bedrock** (Claude), with failover and spend tracking.
-  In this demo, Bedrock runs under AI Gateway's own credentials, so tokens are billed as AI Gateway
-  credits, not to your AWS bill. See [Billing: system Bedrock vs. BYOK](#billing-system-bedrock-vs-byok).
-- The live surf report is the **existing AWS Lambda**, called with short-lived credentials from Vercel OIDC. No AWS keys are stored.
+  Claude runs in our own AWS project through **Bedrock BYOK** (since 2026-11-09), so those tokens are
+  billed by AWS. See [Billing: system Bedrock vs. BYOK](#billing-system-bedrock-vs-byok).
+- The live surf report is the **existing AWS Lambda**, called with short-lived credentials from Vercel OIDC.
+  No AWS keys are stored in this repo or in the project's environment variables.
 
 Live demo: https://surf-agent-eve.vercel.app
 
@@ -137,8 +138,8 @@ How it works: the chat sends `clientContext: { model }` with each message.
 the choice to `agent/agent.ts`, which sets the model and AI Gateway routing for that turn. Each
 request is tagged `model:<id>` and `provider:<name>`, so AI Gateway shows cost and latency per model.
 All five were verified with a full booking (find_rentals, then book_rental with approval) on
-2026-11-08. GPT, Grok and Gemini are always billed through AI Gateway credits. Claude is too,
-until you add Bedrock BYOK (see [Billing](#billing-system-bedrock-vs-byok)).
+2026-11-08. GPT, Grok and Gemini are billed through AI Gateway credits. Claude is billed by AWS
+through Bedrock BYOK (see [Billing](#billing-system-bedrock-vs-byok)).
 
 ## Demonstrate failover
 
@@ -171,28 +172,56 @@ shows the model the agent *requested*, not the one that answered.
 
 ## Billing: system Bedrock vs. BYOK
 
-The Claude calls go to Amazon Bedrock, but **not in your AWS project**. With no credentials of your
-own configured, AI Gateway calls Bedrock with Vercel's own access ("system credentials"):
+AI Gateway can call Bedrock two ways:
 
-- Tokens are billed as **AI Gateway credits on the Vercel invoice**, not on your AWS bill.
-- They don't count toward AWS commitments or discounts, don't use your Bedrock quotas, and don't
-  appear in your CloudWatch or Cost Explorer.
-- The `get_surf_report` Lambda is different: it **does** run in your AWS project (Vercel OIDC → IAM role).
+- **System credentials** (AI Gateway's default): Bedrock runs under Vercel's own access. Tokens are
+  billed as AI Gateway credits, not on your AWS bill, and don't use your Bedrock quotas, CloudWatch
+  or Cost Explorer.
+- **BYOK** (bring your own key): AI Gateway calls Bedrock with your AWS credentials, in your AWS
+  project. Same code, same routing, failover, tags and Logs; tokens are billed by AWS.
 
-**For production, add Bedrock BYOK:** Vercel → AI Gateway → BYOK → Amazon Bedrock, with your
-project's credentials. Same code, same routing, failover, tags and Logs; Claude tokens are then
-billed by AWS and use your quotas. If a BYOK request fails, AI Gateway can fall back to its system
-credentials, and that request is billed by Vercel again.
+**This demo uses BYOK for Bedrock** (enabled 2026-11-09, for the demo only):
 
-| Models | Served by | Billed to (demo) | Billed to (with Bedrock BYOK) |
-|---|---|---|---|
-| Claude Haiku 5.5, Sonnet 5.5 | Amazon Bedrock | AI Gateway credits | **Your AWS bill** |
-| GPT-6.1 Terra, Grok 4.7, Gemini 3.8 Flash | OpenAI, xAI, Google | AI Gateway credits | AI Gateway credits (unless you add those vendors' keys too) |
+- IAM user `vercel-ai-gateway-bedrock` in project `962966032955`, tagged `project=surf-agent`, with
+  an inline invoke-only policy (`bedrock:InvokeModel`, `bedrock:InvokeModelWithResponseStream` on
+  Claude and Nova models and their `us.`/`global.` inference profiles).
+- Its access key is stored in Vercel → AI Gateway → Bring Your Own Key → Amazon Bedrock. The key
+  applies to the whole Vercel team.
+- The `get_surf_report` Lambda doesn't use this key: it still uses Vercel OIDC → IAM role (no stored key).
+
+Why a stored key and not OIDC: with BYOK, AI Gateway (not our code) calls Bedrock, and Bedrock BYOK
+accepts an access key/secret or a Bedrock API key, not a role to assume. So the key is scoped to
+invoke only, rotated with **Replace Key** in the BYOK page, and visible in CloudTrail.
+
+If a BYOK request fails, AI Gateway retries with its system credentials, and that request is
+billed as AI Gateway credits again. BYOK spend also isn't counted in AI Gateway budgets: use an
+AWS Budget on Bedrock (the per-session $0.25 cap in `agent/agent.ts` still applies).
+
+| Models | Served by | Billed to |
+|---|---|---|
+| Claude Haiku 5.5, Sonnet 5.5 | Amazon Bedrock, with our key (BYOK) | **Our AWS bill** |
+| GPT-6.1 Terra, Grok 4.7, Gemini 3.8 Flash | OpenAI, xAI, Google | AI Gateway credits |
+
+### Check that BYOK is used
+
+- **AI Gateway → Logs:** the **Cost** column shows every request's inference cost, BYOK or not,
+  so spend reporting stays complete. Who paid is in the request's details panel: the **Routing**
+  card shows the credential source (BYOK or system). The **Routing** filter shows only BYOK or only
+  system requests. The **Authentication** column is how the app signed in to AI Gateway (here the
+  project's OIDC token, `surf-glassy-agent`), not the Bedrock credential.
+- **AWS → CloudTrail → Event history,** filter **User name = `vercel-ai-gateway-bedrock`:** one
+  `InvokeModelWithResponseStream` per model step, a second or two after the matching AI Gateway log.
+  A fallback to system credentials would leave no event here.
+- **AWS → IAM → Users → `vercel-ai-gateway-bedrock` → Security credentials:** "Last used" with Amazon Bedrock.
+- **AWS → Cost Explorer,** service Bedrock: shows the spend after about 24 hours.
+
+To turn BYOK off, disable or delete the key in the BYOK page; AI Gateway goes back to system
+credentials with no code change. Cleanup: delete the access key and the IAM user.
 
 ## Known limitations
 
-- **System Bedrock:** Claude runs on Bedrock under AI Gateway's credentials and is billed by
-  AI Gateway, not AWS. Add Bedrock BYOK before production (see [Billing](#billing-system-bedrock-vs-byok)).
+- **Bedrock BYOK uses a stored access key** (invoke-only IAM user), not OIDC. For production,
+  rotate it regularly and alert on its use in CloudTrail (see [Billing](#billing-system-bedrock-vs-byok)).
 - **eve is a release candidate** (`1.0.0-rc.3`, pinned).
 - Rentals and bookings are mock data; the spot list is a snapshot unless Supabase is configured.
 - Spots have no coordinates of their own in Glassy's data; the agent picks offshore coordinates itself.
