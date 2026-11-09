@@ -70,7 +70,7 @@ export default defineAgent({
     sessionUsage: ({ window }) =>
       (window.costUsd ?? 0) >= 0.25 ||
       window.inputTokens - window.cacheReadTokens >= 200_000,
-    // Idle sessions end after 1 day (the default is 30).
-    sessionTimeoutMs: 24 * 60 * 60 * 1_000,
+    // Idle sessions end after 12 hours (the default is 30 days).
+    sessionTimeoutMs: 12 * 60 * 60 * 1_000,
   },
 });
