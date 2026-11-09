@@ -1,5 +1,6 @@
 import { defineAgent } from "eve";
 import { defineDynamic } from "eve/models";
+import chatModels from "../data/chat-models.json" with { type: "json" };
 
 /**
  * Model layer: every model call goes through Vercel AI Gateway (a plain
@@ -35,28 +36,46 @@ const FALLBACK_MODELS = ["anthropic/claude-sonnet-5.5", "anthropic/claude-haiku-
  */
 const PROVIDERS = (process.env.SURF_PROVIDERS ?? "bedrock").split(",").map((p) => p.trim());
 
+/**
+ * DECISION: model picker. The chat sends the visitor's choice, agent/channels/eve.ts
+ * checks it against data/chat-models.json and stores it on the turn's auth as
+ * `attributes.model`, and this function reads it. Unknown ids never reach here.
+ * - Claude models stay Bedrock-only, with the Claude failover chain.
+ * - Other vendors are served by their own provider, and fall back to the default
+ *   Claude model on Bedrock if that provider fails: cross-provider failover.
+ * The choice is memoized per turn, so a turn never switches model halfway
+ * (e.g. while it waits for a booking approval).
+ */
+type ChatModel = (typeof chatModels.models)[number];
+const PICKER = new Map<string, ChatModel>(chatModels.models.map((m) => [m.id, m]));
+
 export default defineAgent({
-  model: defineDynamic(() => {
-    const model = process.env.SURF_MODEL?.trim() || DEFAULT_MODEL;
-    return {
-      model,
-      modelOptions: {
-        providerOptions: {
-          gateway: {
-            only: PROVIDERS,
-            models: FALLBACK_MODELS.filter((m) => m !== model),
-            // Keep the provider order exactly as configured (no cache-based reordering).
-            sessionAffinity: false,
-            // Spend visibility: AI Gateway reporting can group cost by these tags.
-            tags: [
-              "app:surf-agent-eve",
-              `env:${process.env.VERCEL_ENV ?? "local"}`,
-              `primary:${model}`,
-            ],
-          },
-        },
-      },
-    };
+  model: defineDynamic(async (ctx) => {
+    const picked = await ctx.memo(["model", ctx.turn?.id ?? null], () => {
+      const value = ctx.session.auth.current?.attributes.model;
+      return typeof value === "string" && PICKER.has(value) ? value : "default";
+    });
+    const envModel = process.env.SURF_MODEL?.trim() || DEFAULT_MODEL;
+    const model = picked === "default" ? envModel : picked;
+    const isClaudeOnBedrock = picked === "default" || PICKER.get(picked)?.provider === "bedrock";
+    const provider = PICKER.get(picked)?.provider ?? "bedrock";
+
+    const gateway: Record<string, string[] | boolean> = isClaudeOnBedrock
+      ? {
+          only: PROVIDERS,
+          models: FALLBACK_MODELS.filter((m) => m !== model),
+          sessionAffinity: false,
+          tags: tagsFor(model, "bedrock"),
+        }
+      : {
+          // The vendor's own API first; if it fails, the default Claude on Bedrock.
+          only: [provider, "bedrock"],
+          order: [provider, "bedrock"],
+          models: [DEFAULT_MODEL],
+          sessionAffinity: false,
+          tags: tagsFor(model, provider),
+        };
+    return { model, modelOptions: { providerOptions: { gateway } } };
   }),
 
   // DECISION: the AWS harness only allowed its surf tool (`allowedTools: ["@surf"]`).
@@ -74,3 +93,14 @@ export default defineAgent({
     sessionTimeoutMs: 12 * 60 * 60 * 1_000,
   },
 });
+
+/** Spend visibility: AI Gateway reporting can group cost by these tags. */
+function tagsFor(model: string, provider: string) {
+  return [
+    "app:surf-agent-eve",
+    `env:${process.env.VERCEL_ENV ?? "local"}`,
+    `primary:${model}`,
+    `model:${model}`,
+    `provider:${provider}`,
+  ];
+}

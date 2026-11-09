@@ -116,6 +116,27 @@ eve sets on every tool, and Llama on Bedrock can't stream tool calls.
   rolling back a model change is an instant rollback.
 - `SURF_PROVIDERS=bedrock,anthropic` allows provider-level failover too (Bedrock first).
 
+## Model picker (visitors choose the model)
+
+The chat has a **Model** dropdown under the message box. The list lives in
+`data/chat-models.json`; edit it to add or remove models (any id from
+`https://ai-gateway.vercel.sh/v1/models`).
+
+| Picker option | Served by | If that provider fails |
+|---|---|---|
+| Claude Haiku 5.5 (default) | Amazon Bedrock (`SURF_MODEL`) | Claude Sonnet 5.5 → Haiku 4.5, still Bedrock only |
+| Claude Sonnet 5.5 | Amazon Bedrock | same Claude chain on Bedrock |
+| GPT-6.1 Terra | OpenAI | default Claude on Bedrock |
+| Grok 4.7 | xAI | default Claude on Bedrock |
+| Gemini 3.8 Flash | Google | default Claude on Bedrock |
+
+How it works: the chat sends `clientContext: { model }` with each message.
+`agent/channels/eve.ts` accepts only ids in that file (anything else gets the default) and passes
+the choice to `agent/agent.ts`, which sets the model and AI Gateway routing for that turn. Each
+request is tagged `model:<id>` and `provider:<name>`, so AI Gateway shows cost and latency per model.
+All five were verified with a full booking (find_rentals, then book_rental with approval) on
+2026-11-08. Non-Bedrock models are billed through AI Gateway credits, not your AWS bill.
+
 ## Demonstrate failover
 
 Pick a primary model Bedrock doesn't serve, so the `only: ["bedrock"]` filter rejects it:

@@ -34,9 +34,17 @@ import { Trace, TraceIcon, TraceLine, TraceTitle } from "@/components/ui/trace";
 import { cn } from "@/lib/utils";
 import { AgentMessage } from "./agent-message";
 import { WEB_CHAT_AGENT } from "@/app/eve-agent";
+import chatModels from "../../../../data/chat-models.json";
 
 const DEFAULT_AGENT_NAME = "Ask Glassy";
 const AGENT_NAME = WEB_CHAT_AGENT ?? DEFAULT_AGENT_NAME;
+
+/**
+ * Model picker. The choice is sent with each message as clientContext; the agent
+ * only accepts ids from data/chat-models.json (checked in agent/channels/eve.ts).
+ */
+const MODELS = chatModels.models;
+const MODEL_STORAGE_KEY = "glassy:model";
 
 export function AgentChat({
   sessionId,
@@ -50,6 +58,20 @@ export function AgentChat({
 }) {
   const [cancellationError, setCancellationError] = useState<string>();
   const [hasInputText, setHasInputText] = useState(false);
+  const [model, setModel] = useState<string>("default");
+  // Remember the visitor's pick on this browser (a convenience only).
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem(MODEL_STORAGE_KEY);
+      if (saved && MODELS.some((m) => m.id === saved)) setModel(saved);
+    } catch {}
+  }, []);
+  const pickModel = (id: string) => {
+    setModel(id);
+    try {
+      window.localStorage.setItem(MODEL_STORAGE_KEY, id);
+    } catch {}
+  };
   const hasSubmittedMessage = useRef(false);
   const replaceSessionRoute = (nextSessionId: string) => {
     if (sessionId !== undefined) return;
@@ -132,7 +154,10 @@ export function AgentChat({
     setCancellationError(undefined);
     hasSubmittedMessage.current = true;
     if (agent.session !== undefined) replaceSessionRoute(agent.session.sessionId);
-    const options = turnOpen ? { turnPolicy: "steer" as const } : undefined;
+    const options = {
+      ...(turnOpen ? { turnPolicy: "steer" as const } : {}),
+      clientContext: { model },
+    };
 
     if (message.files.length === 0) {
       await agent.send(text, options);
@@ -247,7 +272,10 @@ export function AgentChat({
             </Link>
           </div>
         )}
-        <div className="w-full">{composer}</div>
+        <div className="w-full">
+          {composer}
+          <ModelPicker value={model} onChange={pickModel} disabled={isResuming} />
+        </div>
       </div>
     </main>
   );
@@ -280,6 +308,41 @@ function ComposerAction({
     >
       <SquareIcon className="size-3 fill-current" />
     </PromptInputButton>
+  );
+}
+
+function ModelPicker({
+  value,
+  onChange,
+  disabled,
+}: {
+  readonly value: string;
+  readonly onChange: (id: string) => void;
+  readonly disabled: boolean;
+}) {
+  const current = MODELS.find((m) => m.id === value) ?? MODELS[0];
+  return (
+    <div className="mt-2 flex items-center gap-2 px-1 text-muted-foreground text-xs">
+      <label className="flex items-center gap-1.5" htmlFor="model-picker">
+        <BrainIcon className="size-3.5" />
+        Model
+      </label>
+      <select
+        className="rounded-md border border-border bg-background px-2 py-1 text-foreground text-xs outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        disabled={disabled}
+        id="model-picker"
+        onChange={(event) => onChange(event.currentTarget.value)}
+        value={value}
+      >
+        {MODELS.map((m) => (
+          <option key={m.id} value={m.id}>
+            {m.label} · {m.vendor}
+            {m.id === "default" ? " (default)" : ""}
+          </option>
+        ))}
+      </select>
+      <span>via {current.via} · AI Gateway</span>
+    </div>
   );
 }
 
