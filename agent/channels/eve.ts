@@ -1,5 +1,6 @@
-import { eveChannel } from "eve/channels/eve";
+import { defaultEveAuth, eveChannel } from "eve/channels/eve";
 import { type AuthFn, localDev, none, vercelOidc } from "eve/channels/auth";
+import chatModels from "../../data/chat-models.json" with { type: "json" };
 
 /**
  * DECISION: this is a public demo site, so browsers on it may chat anonymously,
@@ -19,6 +20,7 @@ const MAX_POSTS_PER_WINDOW = 30;
 const hits = new Map<string, number[]>();
 
 const publicDemo = none<Request>();
+const ALLOWED_MODELS = new Set(chatModels.models.map((m) => m.id));
 
 const publicDemoAuth: AuthFn<Request> = async (request) => {
   if (process.env.PUBLIC_DEMO !== "true") return null;
@@ -47,4 +49,23 @@ export default eveChannel({
     // Anonymous visitors of the public demo site.
     publicDemoAuth,
   ],
+
+  /**
+   * DECISION: model picker. The chat sends `clientContext: { model }` with each
+   * message. Only ids in data/chat-models.json are accepted (anything else falls
+   * back to the default), so a visitor can't pick an arbitrary or expensive model.
+   * The choice rides on this turn's auth as `attributes.model`, which agent.ts
+   * reads. The context itself is dropped so the model never sees it.
+   */
+  onMessage(ctx) {
+    const auth = defaultEveAuth(ctx);
+    const sent = ctx.eve.clientContext;
+    const picked = sent && typeof sent === "object" && !Array.isArray(sent) ? (sent as { model?: unknown }).model : undefined;
+    const requested = typeof picked === "string" ? picked : undefined;
+    const model = requested && ALLOWED_MODELS.has(requested) ? requested : "default";
+    return {
+      auth: auth && { ...auth, attributes: { ...auth.attributes, model } },
+      clientContext: [],
+    };
+  },
 });
