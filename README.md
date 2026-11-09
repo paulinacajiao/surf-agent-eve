@@ -204,11 +204,15 @@ AWS Budget on Bedrock (the per-session $0.25 cap in `agent/agent.ts` still appli
 
 ### Check that BYOK is used
 
-- **AI Gateway → Logs:** the **Cost** column shows every request's inference cost, BYOK or not,
-  so spend reporting stays complete. Who paid is in the request's details panel: the **Routing**
-  card shows the credential source (BYOK or system). The **Routing** filter shows only BYOK or only
-  system requests. The **Authentication** column is how the app signed in to AI Gateway (here the
-  project's OIDC token, `surf-glassy-agent`), not the Bedrock credential.
+- **AI Gateway → Logs:** open a request. Under **Cost**, **Inference** is `$0.0000` for BYOK
+  requests (AWS bills the tokens), and the **Routing** card shows the credential source. The
+  **Routing** filter shows only BYOK or only system requests. The **Authentication** column is how
+  the app signed in to AI Gateway (here the project's OIDC token, `surf-glassy-agent`), not the
+  Bedrock credential.
+- **Why the Cost column isn't $0:** it includes **Tag / User ID reporting**, $0.075 per 1,000 tag
+  writes, billed to AI Gateway credits even with BYOK. The agent sends 5 tags per model call
+  (`tagsFor()` in `agent/agent.ts`), so about $0.0004 per call. That's more than Haiku's own
+  inference cost, so for production keep only the tags you report on (for example `env` and `model`).
 - **AWS → CloudTrail → Event history,** filter **User name = `vercel-ai-gateway-bedrock`:** one
   `InvokeModelWithResponseStream` per model step, a second or two after the matching AI Gateway log.
   A fallback to system credentials would leave no event here.
